@@ -13,16 +13,19 @@ class FNVTests: XCTestCase {
     
     // MARK: - Property
     static var allTests = [
+        ("testFNV0_copy", testFNV0_copy),
         ("testFNV0_overload", testFNV0_overload),
         ("testFNV0_32", testFNV0_32),
         ("testFNV0_32_file", testFNV0_32_file),
         ("testFNV0_64", testFNV0_64),
         ("testFNV0_64_file", testFNV0_64_file),
+        ("testFNV1_copy", testFNV1_copy),
         ("testFNV1_overload", testFNV1_overload),
         ("testFNV1_32", testFNV1_32),
         ("testFNV1_32_file", testFNV1_32_file),
         ("testFNV1_64", testFNV1_64),
         ("testFNV1_64_file", testFNV1_64_file),
+        ("testFNV1a_copy", testFNV1a_copy),
         ("testFNV1a_overload", testFNV1a_overload),
         ("testFNV1a_32", testFNV1a_32),
         ("testFNV1a_32_file", testFNV1a_32_file),
@@ -38,7 +41,30 @@ class FNVTests: XCTestCase {
     override func tearDown() {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
-    
+
+
+
+    // MARK: - FNV-0
+    func testFNV0_copy() {
+        do {
+            let fnv = FNV.FNV0_32()
+            fnv.update("Hello ")
+            fnv.update("World!")
+            let fnv2 = fnv.copy()
+            fnv.update("Thanks!")
+            fnv2.update("Thanks!")
+            XCTAssertEqual(fnv.digest(), fnv2.digest())
+        }
+        do {
+            let fnv = FNV.FNV0_64()
+            fnv.update("Hello ")
+            fnv.update("World!")
+            let fnv2 = fnv.copy()
+            fnv.update("Thanks!")
+            fnv2.update("Thanks!")
+            XCTAssertEqual(fnv.digest(), fnv2.digest())
+        }
+    }
     
     // MARK: - FNV-0
     func testFNV0_overload() {
@@ -187,7 +213,29 @@ class FNVTests: XCTestCase {
         #endif
     }
     
-    
+
+
+    // MARK: - FNV-0
+    func testFNV1_copy() {
+        do {
+            let fnv = FNV.FNV1_32()
+            fnv.update("Hello ")
+            fnv.update("World!")
+            let fnv2 = fnv.copy()
+            fnv.update("Thanks!")
+            fnv2.update("Thanks!")
+            XCTAssertEqual(fnv.digest(), fnv2.digest())
+        }
+        do {
+            let fnv = FNV.FNV1_64()
+            fnv.update("Hello ")
+            fnv.update("World!")
+            let fnv2 = fnv.copy()
+            fnv.update("Thanks!")
+            fnv2.update("Thanks!")
+            XCTAssertEqual(fnv.digest(), fnv2.digest())
+        }
+    }
     
     // MARK: - FNV-1
     func testFNV1_overload() {
@@ -336,7 +384,29 @@ class FNVTests: XCTestCase {
         #endif
     }
     
-    
+
+
+    // MARK: - FNV-0
+    func testFNV1a_copy() {
+        do {
+            let fnv = FNV.FNV1a_32()
+            fnv.update("Hello ")
+            fnv.update("World!")
+            let fnv2 = fnv.copy()
+            fnv.update("Thanks!")
+            fnv2.update("Thanks!")
+            XCTAssertEqual(fnv.digest(), fnv2.digest())
+        }
+        do {
+            let fnv = FNV.FNV1a_64()
+            fnv.update("Hello ")
+            fnv.update("World!")
+            let fnv2 = fnv.copy()
+            fnv.update("Thanks!")
+            fnv2.update("Thanks!")
+            XCTAssertEqual(fnv.digest(), fnv2.digest())
+        }
+    }
     
     // MARK: - FNV-1a
     func testFNV1a_overload() {

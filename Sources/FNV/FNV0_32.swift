@@ -123,3 +123,15 @@ extension FNV.FNV0_32 {
     }
     
 }
+
+// MARK: - Copy
+extension FNV.FNV0_32 {
+
+    /// Create copy of the hasher
+    public func copy() -> FNV.FNV0_32 {
+        var copied = FNV.FNV0_32.init()
+        copied.h = self.h
+        return copied
+    }
+
+}
